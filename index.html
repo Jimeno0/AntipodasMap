@@ -49,10 +49,10 @@
         basemap: "streets" 
       })
 
-      map.on("extent-change",function(change){
+      map.on("mouse-drag-end",function(change){
 
 
-        var center = change.extent.getCenter();
+        var center = map.extent.getCenter();
         var CenterGeoMap1 = webMercatorUtils.xyToLngLat(center.x,center.y);
         var Long1 = CenterGeoMap1[0];
         var Lat1 = CenterGeoMap1[1];
@@ -75,10 +75,10 @@
 
         });
       
-     /* map2.on("extent-change",function(change2){
+        map2.on("mouse-drag-end",function(change2){
 
 
-        var center = change2.extent.getCenter();
+        var center = map2.extent.getCenter();
         var CenterGeoMap2 = webMercatorUtils.xyToLngLat(center.x,center.y);
         var Long1 = CenterGeoMap2[0];
         var Lat1 = CenterGeoMap2[1];
@@ -101,8 +101,6 @@
 
         });
 
-
-*/
 
       
       });

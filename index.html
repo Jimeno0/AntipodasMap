@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title></title>
+
+    <link rel="stylesheet" href="https://js.arcgis.com/3.15/esri/css/esri.css">
+    <script src="https://js.arcgis.com/3.15/"></script>
+    
+    <style>
+ 
+
+      #mapDiv {
+        width:49.5%;
+        display:block;
+        float:left;
+        border: #663300 1px solid;
+        border-right:none; 
+        margin-bottom:10px;
+      }
+      #mapDiv2 {
+        width:49.5%;
+        display:block;
+        float:left;
+        border: #663300 1px solid;
+        margin-bottom:10px;
+      }
+
+
+    </style>
+
+    <script>
+    require([
+      "esri/map",
+      "esri/geometry/webMercatorUtils",
+      "dojo/domReady!"], 
+      function(Map,webMercatorUtils) {
+       var map = new Map("mapDiv", {
+        center: [-56.049, 38.485],
+        zoom: 3,
+        basemap: "streets"
+      })
+
+      
+      var map2 = new Map("mapDiv2", {
+        center: [-56.049, 38.485],
+        zoom: 3,
+        basemap: "streets" 
+      })
+
+      map.on("extent-change",function(change){
+
+
+        var center = change.extent.getCenter();
+        var CenterGeoMap1 = webMercatorUtils.xyToLngLat(center.x,center.y);
+        var Long1 = CenterGeoMap1[0];
+        var Lat1 = CenterGeoMap1[1];
+
+        
+        Lat2 = -Lat1 ;
+        if (Long1 < 0 ) {
+          Long2 = Long1 + 180 ;
+        }
+        else {
+           Long2 = Long1 - 180 ;
+        };
+
+
+        Zoom1 = map.getZoom();
+        map2.setZoom(Zoom1);
+
+        center2 = [Long2,Lat2];
+        map2.centerAt(center2);
+
+        });
+      
+     /* map2.on("extent-change",function(change2){
+
+
+        var center = change2.extent.getCenter();
+        var CenterGeoMap2 = webMercatorUtils.xyToLngLat(center.x,center.y);
+        var Long1 = CenterGeoMap2[0];
+        var Lat1 = CenterGeoMap2[1];
+
+        
+        Lat2 = -Lat1 ;
+        if (Long1 < 0 ) {
+          Long2 = Long1 + 180 ;
+        }
+        else {
+           Long2 = Long1 - 180 ;
+        };
+
+
+        Zoom = map2.getZoom();
+        map.setZoom(Zoom);
+
+        center3 = [Long2,Lat2];
+        map.centerAt(center3);
+
+        });
+
+
+*/
+
+      
+      });
+    </script>
+
+  </head>
+
+  <body class="claro">
+  <div id="mapDiv"></div>
+  <div id="mapDiv2"></div>
+  </body>
+
+</html>

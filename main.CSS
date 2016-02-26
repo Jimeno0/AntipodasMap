@@ -1,0 +1,67 @@
+#mapDiv {
+        width:49.5%;
+        display:block;
+        float:left;
+        border: #663300 1px solid;
+        border-right:none; 
+        margin-bottom:10px;
+}
+
+#mapDiv2 {
+        width:49.5%;
+        display:block;
+        float:left;
+        border: #663300 1px solid;
+        margin-bottom:10px;
+}
+
+/*nav {
+        margin-bottom:10px;
+} */
+
+/*#btnMad {
+	position:absolute;
+	right:215px;
+	top:10px;
+	z-Index:999;
+}
+	
+
+
+#btnBcn {
+	position:absolute;
+	right:120px;
+	top:10px;
+	z-Index:999;
+}
+
+#btnEsp {
+position:absolute;
+	right:40px;
+	top:10px;
+	z-Index:999;
+}*/
+
+#btnCoor {
+  position:absolute;
+  right:40px;
+  top:60px;
+  z-Index:999;
+}
+
+
+/*
+  
+.btn-primary{
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+
+}*/
+
+ul .btn-default{
+  border-color: transparent;
+}
+
+
+

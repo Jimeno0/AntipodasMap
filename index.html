@@ -1,34 +1,15 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title></title>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="https://js.arcgis.com/3.15/esri/css/esri.css">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link href='main.CSS' rel='stylesheet' type='text/css'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="https://js.arcgis.com/3.15/"></script>
 
-    <link rel="stylesheet" href="https://js.arcgis.com/3.15/esri/css/esri.css">
-    <script src="https://js.arcgis.com/3.15/"></script>
-    
-    <style>
- 
-
-      #mapDiv {
-        width:49.5%;
-        display:block;
-        float:left;
-        border: #663300 1px solid;
-        border-right:none; 
-        margin-bottom:10px;
-      }
-      #mapDiv2 {
-        width:49.5%;
-        display:block;
-        float:left;
-        border: #663300 1px solid;
-        margin-bottom:10px;
-      }
-
-
-    </style>
 
     <script>
     require([
@@ -36,81 +17,179 @@
       "esri/geometry/webMercatorUtils",
       "dojo/domReady!"], 
       function(Map,webMercatorUtils) {
-       var map = new Map("mapDiv", {
-        center: [-56.049, 38.485],
-        zoom: 3,
-        basemap: "streets"
-      })
+        var map = new Map("mapDiv", {
+          center: [-56.049, 38.485],
+          zoom: 3,
+          basemap: "streets"
+        })
 
       
-      var map2 = new Map("mapDiv2", {
-        center: [-56.049, 38.485],
-        zoom: 3,
-        basemap: "streets" 
-      })
+        var map2 = new Map("mapDiv2", {
+          center: [123.951, -38.485],
+          zoom: 3,
+          basemap: "streets" 
+        })
 
-      map.on("mouse-drag-end",function(change){
-
-
-        var center = map.extent.getCenter();
-        var CenterGeoMap1 = webMercatorUtils.xyToLngLat(center.x,center.y);
-        var Long1 = CenterGeoMap1[0];
-        var Lat1 = CenterGeoMap1[1];
-
-        
-        Lat2 = -Lat1 ;
-        if (Long1 < 0 ) {
-          Long2 = Long1 + 180 ;
-        }
-        else {
-           Long2 = Long1 - 180 ;
-        };
+        map.on("mouse-drag-end",function(change){
 
 
-        Zoom1 = map.getZoom();
-        map2.setZoom(Zoom1);
+          var center = map.extent.getCenter();
+          var CenterGeoMap1 = webMercatorUtils.xyToLngLat(center.x,center.y);
+          var Long1 = CenterGeoMap1[0];
+          var Lat1 = CenterGeoMap1[1];
 
-        center2 = [Long2,Lat2];
-        map2.centerAt(center2);
+          
+          Lat2 = -Lat1 ;
+          if (Long1 < 0 ) {
+            Long2 = Long1 + 180 ;
+          }
+          else {
+             Long2 = Long1 - 180 ;
+          };
+
+
+          Zoom1 = map.getZoom();
+          map2.setZoom(Zoom1);
+
+          center2 = [Long2,Lat2];
+          map2.centerAt(center2);
 
         });
-      
+        
         map2.on("mouse-drag-end",function(change2){
 
 
-        var center = map2.extent.getCenter();
-        var CenterGeoMap2 = webMercatorUtils.xyToLngLat(center.x,center.y);
-        var Long1 = CenterGeoMap2[0];
-        var Lat1 = CenterGeoMap2[1];
+          var center = map2.extent.getCenter();
+          var CenterGeoMap2 = webMercatorUtils.xyToLngLat(center.x,center.y);
+          var Long1 = CenterGeoMap2[0];
+          var Lat1 = CenterGeoMap2[1];
 
-        
-        Lat2 = -Lat1 ;
-        if (Long1 < 0 ) {
-          Long2 = Long1 + 180 ;
-        }
-        else {
-           Long2 = Long1 - 180 ;
-        };
+          
+          Lat2 = -Lat1 ;
+          if (Long1 < 0 ) {
+            Long2 = Long1 + 180 ;
+          }
+          else {
+             Long2 = Long1 - 180 ;
+          };
 
 
-        Zoom = map2.getZoom();
-        map.setZoom(Zoom);
+          Zoom = map2.getZoom();
+          map.setZoom(Zoom);
 
-        center3 = [Long2,Lat2];
-        map.centerAt(center3);
+          center3 = [Long2,Lat2];
+          map.centerAt(center3);
+
+        });
+
+        var BtnStrts = document.getElementById('BtnStrts');
+        BtnStrts.addEventListener('click',function(){
+        map.setBasemap('streets');
+        map2.setBasemap('streets');
+        });
+
+
+        var BtnTopo = document.getElementById('BtnTopo');
+        BtnTopo.addEventListener('click',function(){
+        map.setBasemap('topo');
+        map2.setBasemap('topo');
 
         });
 
 
-      
-      });
+        var BtnSat = document.getElementById('BtnSat');
+        BtnSat.addEventListener('click',function(){
+        map.setBasemap('satellite');
+        map2.setBasemap('satellite');
+ 
+        });
+
+
+        var BtnOcean = document.getElementById('BtnOcean');
+        BtnOcean.addEventListener('click',function(){
+        map.setBasemap('oceans');
+        map2.setBasemap('oceans');
+
+        });
+         
+        var Mad = document.getElementById('btnMad');
+        Mad.addEventListener('click',function(){
+          map.centerAndZoom([-3.688510, 40.453010],5);
+          var delay = 1000;
+          setTimeout(function(){
+          map.centerAndZoom([-3.688510, 40.453010],10);
+          }, delay); 
+        });
+
+
+        var Bcn = document.getElementById('btnBcn');
+        Bcn.addEventListener('click',function(){
+          map.centerAndZoom([-3.688510, 40.453010],5);
+          var delay = 1000;
+          setTimeout(function(){
+          map.centerAndZoom([2.154007, 41.390205],10);
+          }, delay); 
+        });
+
+
+        var Esp = document.getElementById('btnEsp');
+        Esp.addEventListener('click',function(){
+          map.centerAndZoom([-3.688510, 40.453010],4);
+        });
+
+
+
+
+
+
+
+
+
+    });
     </script>
 
-  </head>
+<title>Antipodas</title>
 
-  <body class="claro">
-  <div id="mapDiv"></div>
-  <div id="mapDiv2"></div>
-  </body>
+</head>
+<body>
 
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mapas Base <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+          <li><a id="BtnStrts" class="btn btn-default" >Callejero</a></li>
+          <li><a id="BtnTopo" class="btn btn-default" >Topografico</a></li>
+          <li><a id="BtnSat" class="btn btn-default">Satelite</a></li>
+          <li><a id="BtnOcean" class="btn btn-default">Oceanos</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input id='lat' type="text" class="form-control" placeholder="Latitud">
+          <input id='long' type="text" class="form-control" placeholder="Longitud">
+        </div>
+        <button id='Coord' type="submit" class="btn btn-default">Ir</button>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a id="btnEsp" href="#">España</a></li>
+        <li><a id="btnMad" href="#">Madrid</a></li>
+        <li><a id="btnBcn" href="#">Barcelona</a></li>
+      </ul>
+    </div><!-- 
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<div id="mapDiv"></div>
+<div id="mapDiv2"></div>
+
+</body>
 </html>
+

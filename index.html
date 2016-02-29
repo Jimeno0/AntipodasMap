@@ -30,6 +30,14 @@
           basemap: "streets" 
         })
 
+
+
+        map.on("zoom-end",function(change3){
+          Zoom = map.getZoom();
+          map2.setZoom(Zoom);
+        });
+
+
         map.on("mouse-drag-end",function(change){
 
 
@@ -47,13 +55,14 @@
              Long2 = Long1 - 180 ;
           };
 
-
-          Zoom1 = map.getZoom();
-          map2.setZoom(Zoom1);
-
           center2 = [Long2,Lat2];
           map2.centerAt(center2);
 
+        });
+
+        map2.on("zoom-end",function(change3){
+          Zoom = map2.getZoom();
+          map.setZoom(Zoom);
         });
         
         map2.on("mouse-drag-end",function(change2){
@@ -73,9 +82,6 @@
              Long2 = Long1 - 180 ;
           };
 
-
-          Zoom = map2.getZoom();
-          map.setZoom(Zoom);
 
           center3 = [Long2,Lat2];
           map.centerAt(center3);

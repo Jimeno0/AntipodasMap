@@ -10,152 +10,16 @@
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script src="https://js.arcgis.com/3.15/"></script>
 
+  <script type="text/javascript" charset="utf-8" src="index.js"></script>
 
-  <script>
-    require([
-      "esri/map",
-      "esri/geometry/webMercatorUtils",
-      "dojo/domReady!"], 
-      function(Map,webMercatorUtils) {
-        var map = new Map("mapDiv", {
-          center: [-56.049, 38.485],
-          zoom: 3,
-          basemap: "streets"
-        })
-
-      
-        var map2 = new Map("mapDiv2", {
-          center: [123.951, -38.485],
-          zoom: 3,
-          basemap: "streets" 
-        })
-
-        map.on("mouse-drag-end",function(change){
-
-
-          var center = map.extent.getCenter();
-          var CenterGeoMap1 = webMercatorUtils.xyToLngLat(center.x,center.y);
-          var Long1 = CenterGeoMap1[0];
-          var Lat1 = CenterGeoMap1[1];
-
-          
-          Lat2 = -Lat1 ;
-          if (Long1 < 0 ) {
-            Long2 = Long1 + 180 ;
-          }
-          else {
-             Long2 = Long1 - 180 ;
-          };
-
-
-          Zoom1 = map.getZoom();
-          map2.setZoom(Zoom1);
-
-          center2 = [Long2,Lat2];
-          map2.centerAt(center2);
-
-        });
-        
-        map2.on("mouse-drag-end",function(change2){
-
-
-          var center = map2.extent.getCenter();
-          var CenterGeoMap2 = webMercatorUtils.xyToLngLat(center.x,center.y);
-          var Long1 = CenterGeoMap2[0];
-          var Lat1 = CenterGeoMap2[1];
-
-          
-          Lat2 = -Lat1 ;
-          if (Long1 < 0 ) {
-            Long2 = Long1 + 180 ;
-          }
-          else {
-             Long2 = Long1 - 180 ;
-          };
-
-
-          Zoom = map2.getZoom();
-          map.setZoom(Zoom);
-
-          center3 = [Long2,Lat2];
-          map.centerAt(center3);
-
-        });
-
-        var BtnStrts = document.getElementById('BtnStrts');
-        BtnStrts.addEventListener('click',function(){
-        map.setBasemap('streets');
-        map2.setBasemap('streets');
-        });
-
-
-        var BtnTopo = document.getElementById('BtnTopo');
-        BtnTopo.addEventListener('click',function(){
-        map.setBasemap('topo');
-        map2.setBasemap('topo');
-
-        });
-
-
-        var BtnSat = document.getElementById('BtnSat');
-        BtnSat.addEventListener('click',function(){
-        map.setBasemap('satellite');
-        map2.setBasemap('satellite');
- 
-        });
-
-
-        var BtnOcean = document.getElementById('BtnOcean');
-        BtnOcean.addEventListener('click',function(){
-        map.setBasemap('oceans');
-        map2.setBasemap('oceans');
-
-        });
-         
-        var Mad = document.getElementById('btnMad');
-        Mad.addEventListener('click',function(){
-          map.centerAndZoom([-3.688510, 40.453010],5);
-          var delay = 1000;
-          setTimeout(function(){
-          map.centerAndZoom([-3.688510, 40.453010],10);
-          }, delay); 
-        });
-
-
-        var Bcn = document.getElementById('btnBcn');
-        Bcn.addEventListener('click',function(){
-          map.centerAndZoom([-3.688510, 40.453010],5);
-          var delay = 1000;
-          setTimeout(function(){
-          map.centerAndZoom([2.154007, 41.390205],10);
-          }, delay); 
-        });
-
-
-        var Esp = document.getElementById('btnEsp');
-        Esp.addEventListener('click',function(){
-          map.centerAndZoom([-3.688510, 40.453010],4);
-        });
-
-
-        var coord = document.getElementById('btnCoord');
-        coord.addEventListener('click',function(){
-          var Latitud = parseFloat(lat.value);
-          var Longitud = parseFloat(long.value);
-          map.centerAndZoom([Longitud,Latitud],6);
-        });
-    });
-  </script>
-
-  <title>Antipodas</title>
+  <title>Antipodas Map</title>
 
 </head>
+
 <body>
 
 <nav class="navbar navbar-default">
   <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-
 
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -188,8 +52,8 @@
         </div>
       <ul class="nav navbar-nav navbar-right">
         <li><a id="btnEsp" href="#">España</a></li>
-        <li><a id="btnMad" href="#">Madrid</a></li>
-        <li><a id="btnBcn" href="#">Barcelona</a></li>
+        <li><a id="btnSanFran" href="#">San Francisco</a></li>
+        <li><a id="btnSinga" href="#">Singapur</a></li>
       </ul>
     </div>
   </div>
@@ -200,4 +64,3 @@
 
 </body>
 </html>
-

@@ -142,10 +142,19 @@
 
 
 
-
-
-
     });
+
+        function readCoord (form) {
+        var Latitud = form.lat.value;
+        var Longitud = form.long.value;
+        alert ("coordenadas: " + Latitud  + " " + Longitud);
+    }
+
+    
+
+
+
+
     </script>
 
 <title>Antipodas</title>
@@ -175,7 +184,7 @@
           <input id='lat' type="text" class="form-control" placeholder="Latitud">
           <input id='long' type="text" class="form-control" placeholder="Longitud">
         </div>
-        <button id='Coord' type="submit" class="btn btn-default">Ir</button>
+        <button id='btnCoord' type="button" class="btn btn-default" onclick="readCoord(this.form)">Ir</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
         <li><a id="btnEsp" href="#">España</a></li>

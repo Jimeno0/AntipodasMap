@@ -1,46 +1,27 @@
 #mapDiv {
-        width:49.5%;
+
+        
+        width:50%;
         display:block;
         float:left;
-        border: #663300 1px solid;
-        border-right:none; 
-        margin-bottom:10px;
+        /*border: #663300 1px solid;*/
+        border-right:#663300 1px solid; 
+        
 }
 
 #mapDiv2 {
-        width:49.5%;
+        width:50%;
         display:block;
         float:left;
-        border: #663300 1px solid;
-        margin-bottom:10px;
+        /*border: #663300 1px solid;*/
+        
 }
 
-/*nav {
-        margin-bottom:10px;
-} */
-
-/*#btnMad {
-	position:absolute;
-	right:215px;
-	top:10px;
-	z-Index:999;
-}
-	
+.navbar {
+        margin-bottom:0px;
+} 
 
 
-#btnBcn {
-	position:absolute;
-	right:120px;
-	top:10px;
-	z-Index:999;
-}
-
-#btnEsp {
-position:absolute;
-	right:40px;
-	top:10px;
-	z-Index:999;
-}*/
 
 #btnCoor {
   position:absolute;
@@ -50,14 +31,6 @@ position:absolute;
 }
 
 
-/*
-  
-.btn-primary{
-  color: #333;
-  background-color: #fff;
-  border-color: #ccc;
-
-}*/
 
 ul .btn-default{
   border-color: transparent;

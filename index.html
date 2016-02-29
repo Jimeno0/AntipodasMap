@@ -138,18 +138,20 @@
         });
 
 
+        var coord = document.getElementById('btnCoord');
+        coord.addEventListener('click',function(){
+           var Latitud = parseFloat(lat.value);
+          var Longitud = parseFloat(long.value);
+          
+          map.centerAndZoom([Longitud,Latitud],6);
 
+        })
 
-
+           
 
     });
 
-        function readCoord (form) {
-        var Latitud = form.lat.value;
-        var Longitud = form.long.value;
-        alert ("coordenadas: " + Latitud  + " " + Longitud);
-    }
-
+      
     
 
 
@@ -179,13 +181,11 @@
           </ul>
         </li>
       </ul>
-      <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
+        <div class="navbar-form navbar-left" role="search">
           <input id='lat' type="text" class="form-control" placeholder="Latitud">
           <input id='long' type="text" class="form-control" placeholder="Longitud">
+          <button id='btnCoord' type="button" class="btn btn-default">Ir</button>
         </div>
-        <button id='btnCoord' type="button" class="btn btn-default" onclick="readCoord(this.form)">Ir</button>
-      </form>
       <ul class="nav navbar-nav navbar-right">
         <li><a id="btnEsp" href="#">España</a></li>
         <li><a id="btnMad" href="#">Madrid</a></li>

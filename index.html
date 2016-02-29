@@ -11,7 +11,7 @@
   <script src="https://js.arcgis.com/3.15/"></script>
 
 
-    <script>
+  <script>
     require([
       "esri/map",
       "esri/geometry/webMercatorUtils",
@@ -140,26 +140,14 @@
 
         var coord = document.getElementById('btnCoord');
         coord.addEventListener('click',function(){
-           var Latitud = parseFloat(lat.value);
+          var Latitud = parseFloat(lat.value);
           var Longitud = parseFloat(long.value);
-          
           map.centerAndZoom([Longitud,Latitud],6);
-
-        })
-
-           
-
+        });
     });
+  </script>
 
-      
-    
-
-
-
-
-    </script>
-
-<title>Antipodas</title>
+  <title>Antipodas</title>
 
 </head>
 <body>
@@ -167,6 +155,18 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
+
+
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Antipodas Map</a>
+    </div>
+
     <div class="navbar-header">
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
@@ -191,9 +191,8 @@
         <li><a id="btnMad" href="#">Madrid</a></li>
         <li><a id="btnBcn" href="#">Barcelona</a></li>
       </ul>
-    </div><!-- 
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+    </div>
+  </div>
 </nav>
 
 <div id="mapDiv"></div>

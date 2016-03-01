@@ -1,0 +1,40 @@
+#mapDiv {
+
+        
+        width:50%;
+        display:block;
+        float:left;
+        /*border: #663300 1px solid;*/
+        border-right:#663300 1px solid; 
+        
+}
+
+#mapDiv2 {
+        width:50%;
+        display:block;
+        float:left;
+        /*border: #663300 1px solid;*/
+        
+}
+
+.navbar {
+        margin-bottom:0px;
+} 
+
+
+
+#btnCoor {
+  position:absolute;
+  right:40px;
+  top:60px;
+  z-Index:999;
+}
+
+
+
+ul .btn-default{
+  border-color: transparent;
+}
+
+
+

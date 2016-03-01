@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="https://js.arcgis.com/3.15/esri/css/esri.css">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link href='main.CSS' rel='stylesheet' type='text/css'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="https://js.arcgis.com/3.15/"></script>
+
+  <script type="text/javascript" charset="utf-8" src="index.js"></script>
+
+  <title>Antipodas Map</title>
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Antipodas Map</a>
+    </div>
+
+    <div class="navbar-header">
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mapas Base <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+          <li><a id="BtnStrts" class="btn btn-default" >Callejero</a></li>
+          <li><a id="BtnTopo" class="btn btn-default" >Topografico</a></li>
+          <li><a id="BtnSat" class="btn btn-default">Satelite</a></li>
+          <li><a id="BtnOcean" class="btn btn-default">Oceanos</a></li>
+          </ul>
+        </li>
+      </ul>
+        <div class="navbar-form navbar-left" role="search">
+          <input id='lat' type="text" class="form-control" placeholder="Latitud">
+          <input id='long' type="text" class="form-control" placeholder="Longitud">
+          <button id='btnCoord' type="button" class="btn btn-default">Ir</button>
+        </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a id="btnEsp" href="#">España</a></li>
+        <li><a id="btnSanFran" href="#">San Francisco</a></li>
+        <li><a id="btnSinga" href="#">Singapur</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div id="mapDiv"></div>
+<div id="mapDiv2"></div>
+
+</body>
+</html>
